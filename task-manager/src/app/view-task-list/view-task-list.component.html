@@ -1,0 +1,75 @@
+<div class="container">
+    <h2 style="text-align: center; color: green;">Welcome to Task Manager</h2>
+    <hr>
+    <div class="header">
+        <button type="button" class="btn btn-primary" style="float: right;" (click)="createTask()">Create Task</button>
+    </div>    
+    <div>
+        <h3 style="color: blue">Task Lists</h3>
+    </div>
+    <hr>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead">
+            <tr>
+                <td style="font-weight: bold; background-color: silver; color: blue">Sr. No.</td>
+                <td style="font-weight: bold; background-color: silver; color: blue">Task Name</td>
+                <td style="font-weight: bold; background-color: silver; color: blue">Due Date</td>
+                <td style="font-weight: bold; background-color: silver; color: blue">Action</td>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let task of taskMaster; let i= index">     
+              <td>{{i+1}}</td>
+              <td>{{task.taskName || 'N/A'}}</td>
+              <td>{{task.dueDate}}</td>
+              <td></td>          
+          </tr>
+        </tbody>  
+    </table>
+</div>
+
+
+<div [style.display]="showModal" class="w3-modal w3-animate-zoom">
+    <div class="w3-modal-content w3-card-4" style="max-width: 700px;">
+      <header class="w3-container w3-blue">
+        <span (click)="closeModal()" class="w3-button w3-large w3-display-topright">×</span>
+        <h3>Create Task</h3>
+      </header>
+      <br>
+      <div class="w3-container">
+  
+        <form [formGroup]="taskForm" (ngSubmit)="submit()">
+  
+        <div class="row form-group d-flex mt-3">
+            <div class="col-md-3">
+              <label class="fw-bold">Task Name</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control" formControlName="taskName" placeholder="Enter Task Name">
+            </div>
+        </div>
+
+        <div class="row form-group d-flex mt-3">
+          <div class="col-md-3">
+            <label class="fw-bold">Task Due Date</label>
+          </div>
+          <div class="col-md-9">
+            <input type="date" class="form-control" formControlName="dueDate" 
+            onkeydown="return false">
+          </div>
+        </div>
+    
+        <br>
+        <div class="row text-center mb-4">
+          <div class="col-12">
+            <input type="submit" value="Submit" class="btn btn-primary"> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="Close" (click)="closeModal()" class="btn btn-primary"> 
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
