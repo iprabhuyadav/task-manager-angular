@@ -29,6 +29,22 @@ export class UserService {
     }), catchError(this.errorHandler));
   }
 
+    // Update Task API
+
+    updateTask(data :any, taskId:any): Observable<any> {
+      return this.http.put(AUTH_API + "/updateTask/" + taskId, data).pipe(map((result: any) => {
+        return result;
+      }), catchError(this.errorHandler));
+    }
+
+    // Delete Task API
+    deleteTask(taskId:any): Observable<any> {
+      return this.http.delete(AUTH_API + "/deleteTask/" + taskId).pipe(map((result: any) => {
+        return result;
+      }), catchError(this.errorHandler));
+    }
+    
+
   
 
   errorHandler(error: any) {

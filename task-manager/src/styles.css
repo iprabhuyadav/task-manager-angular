@@ -1,5 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
+@import '~ngx-toastr/toastr';
 .ng-value {
     margin-top: 18px;
 }

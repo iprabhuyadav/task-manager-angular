@@ -14,6 +14,7 @@
                 <td style="font-weight: bold; background-color: silver; color: blue">Sr. No.</td>
                 <td style="font-weight: bold; background-color: silver; color: blue">Task Name</td>
                 <td style="font-weight: bold; background-color: silver; color: blue">Due Date</td>
+                <td style="font-weight: bold; background-color: silver; color: blue">Active Flag</td>
                 <td style="font-weight: bold; background-color: silver; color: blue">Action</td>
             </tr>
         </thead>
@@ -22,14 +23,19 @@
             <tr *ngFor="let task of taskMaster; let i= index">     
               <td>{{i+1}}</td>
               <td>{{task.taskName || 'N/A'}}</td>
-              <td>{{task.dueDate}}</td>
-              <td></td>          
+              <td>{{task.dueDate | date: 'dd/MM/yyyy'}}</td>
+              <td>{{task.activeFlag}}</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="update(task)">Update</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-danger" (click)="deleteTask(task.taskId)">Delete</button>
+              </td>          
           </tr>
         </tbody>  
     </table>
 </div>
 
-
+<!-- Create Task Modal -->
 <div [style.display]="showModal" class="w3-modal w3-animate-zoom">
     <div class="w3-modal-content w3-card-4" style="max-width: 700px;">
       <header class="w3-container w3-blue">
@@ -39,11 +45,11 @@
       <br>
       <div class="w3-container">
   
-        <form [formGroup]="taskForm" (ngSubmit)="submit()">
+        <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
   
         <div class="row form-group d-flex mt-3">
             <div class="col-md-3">
-              <label class="fw-bold">Task Name</label>
+              <label class="fw-bold">Task Name<span style="color: red;">*</span></label>
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control" formControlName="taskName" placeholder="Enter Task Name">
@@ -52,7 +58,7 @@
 
         <div class="row form-group d-flex mt-3">
           <div class="col-md-3">
-            <label class="fw-bold">Task Due Date</label>
+            <label class="fw-bold">Task Due Date<span style="color: red;">*</span></label>
           </div>
           <div class="col-md-9">
             <input type="date" class="form-control" formControlName="dueDate" 
@@ -71,5 +77,95 @@
         </form>
       </div>
     </div>
+</div>
+
+
+ <!-- Update Task Modal --> 
+
+ <div [style.display]="showModalUpdate" class="w3-modal w3-animate-zoom">
+  <div class="w3-modal-content w3-card-4" style="max-width: 700px;">
+    <header class="w3-container w3-blue">
+      <span (click)="closeModalUpdate()" class="w3-button w3-large w3-display-topright">×</span>
+      <h3>Update Task Details</h3>
+    </header>
+    <br>
+    <div class="w3-container">
+
+      <form [formGroup]="updateTaskForm" (ngSubmit)="updateTask()">
+
+
+      <div class="row">
+
+        <div class="row form-group d-flex mt-3">
+          <div class="col-md-3">
+            <label class="fw-bold">Task Name<span style="color: red;">*</span></label>
+          </div>
+          <div class="col-md-9">
+            <p>
+              <input type="text" class="form-control" formControlName="taskName" placeholder="Enter Task Name">
+            </p>
+          </div>
+        </div>
+
+        <div class="row text-center mb-4">
+          <div class="col-12">
+            <input type="submit" value="Submit" class="btn btn-primary">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="Close" (click)="closeModalUpdate()" class="btn btn-primary">
+          </div>
+        </div>
+
+      </div>
+
+      </form>
+     
+    </div>
   </div>
+</div>
+
+ <!-- Update Status Modal --> 
+
+ <div [style.display]="showModalUpdate" class="w3-modal w3-animate-zoom">
+  <div class="w3-modal-content w3-card-4" style="max-width: 700px;">
+    <header class="w3-container w3-blue">
+      <span (click)="closeModalUpdate()" class="w3-button w3-large w3-display-topright">×</span>
+      <h3>Update Task Status</h3>
+    </header>
+    <br>
+    <div class="w3-container">
+
+      <form [formGroup]="updateTaskForm" (ngSubmit)="updateTask()">
+
+
+      <div class="row">
+
+        <div class="row form-group d-flex mt-3">
+          <div class="col-md-3">
+            <label class="fw-bold">Task Name<span style="color: red;">*</span></label>
+          </div>
+          <div class="col-md-9">
+            <p>
+              <input type="text" class="form-control" formControlName="taskName" placeholder="Enter Task Name">
+            </p>
+          </div>
+        </div>
+
+        <div class="row text-center mb-4">
+          <div class="col-12">
+            <input type="submit" value="Submit" class="btn btn-primary">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="Close" (click)="closeModalUpdate()" class="btn btn-primary">
+          </div>
+        </div>
+
+      </div>
+
+      </form>
+     
+    </div>
+  </div>
+</div>
+
+
+
 
