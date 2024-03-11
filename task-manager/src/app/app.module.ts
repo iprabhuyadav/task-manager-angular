@@ -8,12 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewTaskListComponent
+    ViewTaskListComponent,
+    UserLoginComponent,
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,
