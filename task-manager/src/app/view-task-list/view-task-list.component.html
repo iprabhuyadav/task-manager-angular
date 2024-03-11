@@ -62,7 +62,7 @@
           </div>
           <div class="col-md-9">
             <input type="date" class="form-control" formControlName="dueDate" 
-            onkeydown="return false">
+            onkeydown="return false" >
           </div>
         </div>
     
@@ -107,49 +107,17 @@
           </div>
         </div>
 
-        <div class="row text-center mb-4">
-          <div class="col-12">
-            <input type="submit" value="Submit" class="btn btn-primary">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="button" value="Close" (click)="closeModalUpdate()" class="btn btn-primary">
-          </div>
-        </div>
-
-      </div>
-
-      </form>
-     
-    </div>
-  </div>
-</div>
-
- <!-- Update Status Modal --> 
-
- <div [style.display]="showModalUpdate" class="w3-modal w3-animate-zoom">
-  <div class="w3-modal-content w3-card-4" style="max-width: 700px;">
-    <header class="w3-container w3-blue">
-      <span (click)="closeModalUpdate()" class="w3-button w3-large w3-display-topright">×</span>
-      <h3>Update Task Status</h3>
-    </header>
-    <br>
-    <div class="w3-container">
-
-      <form [formGroup]="updateTaskForm" (ngSubmit)="updateTask()">
-
-
-      <div class="row">
-
         <div class="row form-group d-flex mt-3">
           <div class="col-md-3">
-            <label class="fw-bold">Task Name<span style="color: red;">*</span></label>
+            <label class="fw-bold">Task Due Date</label>
           </div>
           <div class="col-md-9">
-            <p>
-              <input type="text" class="form-control" formControlName="taskName" placeholder="Enter Task Name">
-            </p>
+            <input type="date" class="form-control" formControlName="dueDate" 
+            onkeydown="return false">
           </div>
         </div>
-
+        <br>
+        <br>
         <div class="row text-center mb-4">
           <div class="col-12">
             <input type="submit" value="Submit" class="btn btn-primary">

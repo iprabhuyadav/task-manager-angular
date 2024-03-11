@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -52,7 +51,6 @@ updateTaskForm = new FormGroup({
 
   update(task:any)
   {
-    this.updateTaskForm.get('taskName')?.patchValue('');
     this.taskId = task.taskId;
     this.showModalUpdate = 'block';
   }
@@ -117,6 +115,7 @@ updateTaskForm = new FormGroup({
     let postJson = {
       activeFlag: "Active",
       taskName: this.updateTaskForm.get('taskName')?.value,
+      dueDate: this.updateTaskForm.get('dueDate')?.value,
       taskId: this.taskId
     }
     
