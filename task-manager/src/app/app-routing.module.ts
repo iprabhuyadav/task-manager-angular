@@ -5,7 +5,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/view-task', pathMatch: 'full' },
+  { path: '', redirectTo: '/user-login', pathMatch: 'full' },
   { path:'view-task', component:ViewTaskListComponent },
   { path:'user-registration', component:UserRegistrationComponent },
   { path:'user-login', component:UserLoginComponent }

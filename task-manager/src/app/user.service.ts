@@ -16,36 +16,68 @@ export class UserService {
   // Get Task List API
 
   getTaskList(): Observable<any> {
-    return this.http.get<{ token: string }>(AUTH_API + "/getAllTasks" ).pipe(map((result: any) => {
+    return this.http.get<{ token: string }>(AUTH_API + "/getAllTasks").pipe(map((result: any) => {
       return result;
     }), catchError(this.errorHandler));
   }
 
+   // Get All Task List by User Id  API
+
+   getTaskListByUserId(userId:any): Observable<any> {
+    return this.http.get<{ token: string }>(AUTH_API + "/getAllTasks/"+ userId).pipe(map((result: any) => {
+      return result;
+    }), catchError(this.errorHandler));
+  }
+
+     // Get All Task List by Email Id  API
+
+     getSharedTaskListByUserId(userId:any): Observable<any> {
+      return this.http.get<{ token: string }>(AUTH_API + "/getAllSharedTasks/"+ userId).pipe(map((result: any) => {
+        return result;
+      }), catchError(this.errorHandler));
+    }
+  
+
   // Create Task API
 
-  createTask(data :any): Observable<any> {
+  createTask(data: any): Observable<any> {
     return this.http.post(AUTH_API + "/createTask", data).pipe(map((result: any) => {
       return result;
     }), catchError(this.errorHandler));
   }
 
-    // Update Task API
+  // Update Task API
 
-    updateTask(data :any, taskId:any): Observable<any> {
-      return this.http.put(AUTH_API + "/updateTask/" + taskId, data).pipe(map((result: any) => {
+  updateTask(data: any, taskId: any): Observable<any> {
+    return this.http.put(AUTH_API + "/updateTask/" + taskId, data).pipe(map((result: any) => {
+      return result;
+    }), catchError(this.errorHandler));
+  }
+
+  // Delete Task API
+  deleteTask(taskId: any): Observable<any> {
+    return this.http.delete(AUTH_API + "/deleteTask/" + taskId).pipe(map((result: any) => {
+      return result;
+    }), catchError(this.errorHandler));
+  }
+
+  // User Registration API
+
+  userRegistration(data: any): Observable<any> {
+    return this.http.post(AUTH_API + "/userRegistration", data).pipe(map((result: any) => {
+      return result;
+    }), catchError(this.errorHandler));
+  }
+
+    // User Login API
+
+    userLogin(data: any): Observable<any> {
+      return this.http.post(AUTH_API + "/login", data).pipe(map((result: any) => {
         return result;
       }), catchError(this.errorHandler));
     }
-
-    // Delete Task API
-    deleteTask(taskId:any): Observable<any> {
-      return this.http.delete(AUTH_API + "/deleteTask/" + taskId).pipe(map((result: any) => {
-        return result;
-      }), catchError(this.errorHandler));
-    }
-    
-
   
+
 
   errorHandler(error: any) {
     let errorMessage = '';

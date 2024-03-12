@@ -1,12 +1,11 @@
 <div class="container">
     <div class="card">
         <div class="card-header pt-0 pb-0" style="background: #E1E5E9;">
-            <h3 class="card-title" style="text-align: center; color:green">User Registration</h3>
+            <h3 class="card-title" style="text-align: center; color:green">Task Manager - Registration</h3>
         </div>
-
         <div class="card-body">
 
-            <form>
+            <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
 
                 <div class="row">
                     <div class="col-md-6">
@@ -31,8 +30,8 @@
                         <div class="form-group">
 
                             <b><label>Email<span style="color: red;">*</span></label></b>
-                            <input type="text" class="form-control" formControlName="email"
-                                placeholder="Enter Email Id">
+                            <input type="text" class="form-control" formControlName="emailAddress"
+                                placeholder="Enter Email Address">
 
                         </div>
                     </div>
@@ -58,7 +57,7 @@
             </form>
 
             <hr>
-            <h3 class="card-title" style="text-align: center; color:green">Already Registered User</h3>
+            <h4 class="card-title" style="text-align: center; color:green">Already Registered User</h4>
             <hr>
             <div style="text-align: center;">
                 <a href="/user-login" style="color: blue; font-size: 20px;">
